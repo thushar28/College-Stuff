@@ -1,0 +1,66 @@
+#include<stdio.h>
+#include<GL/glut.h>
+void myInit()
+{
+	glClearColor(0.0,0.0,0.2,0.0);
+	glClear(GL_COLOR_BUFFER_BIT);
+	glMatrixMode(GL_PROJECTION);
+	gluOrtho2D(0.0,300.0,0.0,300.0);
+}
+void line()
+{
+	glColor3f(0.2,0.5,0.1);
+	glLineWidth(5.0);
+	glBegin(GL_LINE_LOOP);
+	glVertex2i(200,50);
+	glVertex2i(50,50);
+	glVertex2i(50,100);
+	glVertex2i(200,100);
+	glEnd();
+	glColor3f(0.9,0.5,0.1);
+	glBegin(GL_LINES);
+	glVertex2i(100,100);
+	glVertex2i(100,50);
+	glVertex2i(75,150);
+	glVertex2i(160,150);
+	glVertex2i(160,150);
+	glVertex2i(200,100);
+	glEnd();
+	glColor3f(0.1,0.0,0.8);
+	glBegin(GL_LINE_STRIP);
+	glVertex2i(50,100);
+	glVertex2i(75,150);
+	glVertex2i(100,100);
+	glEnd();
+	glColor3f(0.6,0.3,0.4);
+	glBegin(GL_POLYGON);
+	glVertex2i(70,50);
+	glVertex2i(70,80);
+	glVertex2i(80,80);
+	glVertex2i(80,50);
+	glEnd();
+	glBegin(GL_LINE_STRIP);
+	glVertex2i(75,200);
+	glVertex2i(85,180);
+	glVertex2i(95,200);
+	glEnd();
+	glColor3f(1.0,1.0,1.0);
+	glPointSize(10);
+	glBegin(GL_POINTS);
+	glVertex2i(190,250);
+	glVertex2i(110,250);
+	glVertex2i(105,210);
+	glEnd();
+	glFlush();
+}
+void main(int argc,char *argv[])
+{
+	glutInit(&argc,argv);
+	glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
+	glutInitWindowPosition(0,0);
+	glutInitWindowSize(500,500);
+	glutCreateWindow("Display Picture");	
+	myInit();
+	glutDisplayFunc(line);
+	glutMainLoop();
+}
